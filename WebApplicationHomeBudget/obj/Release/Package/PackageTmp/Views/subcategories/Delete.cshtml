@@ -1,0 +1,50 @@
+﻿@model WebApplicationHomeBudget.Models.subcategories
+
+@{
+    ViewBag.Title = "Usuń";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+    <link href="~/Content/main3.css" rel="stylesheet" />
+<h2>Usuń</h2>
+
+<h3>Napewno chcesz usunąć kategorię?</h3>
+<div>
+    <h4>Kategorie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Nazwa kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_subcategory)
+        </dd>
+
+        <dt>
+            <label>Opis</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description_Catgory)
+        </dd>
+
+        <dt>
+            <label>Rodzaj kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Name_category)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("id_client_Sub", (object)ViewBag.id_client_Sub)
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-group-vertical" />
+
+        </div>
+    }
+</div>

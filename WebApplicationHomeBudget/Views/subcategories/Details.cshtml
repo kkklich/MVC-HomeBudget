@@ -1,0 +1,43 @@
+﻿@model WebApplicationHomeBudget.Models.subcategories
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+    <link href="~/Content/main3.css" rel="stylesheet" />
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Kategorie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Nazwa kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_subcategory)
+        </dd>
+
+        <dt>
+            <label>Opis</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description_Catgory)
+        </dd>
+
+        <dt>
+            <label>Rodzaj kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Name_category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <input type="button" value="Edytuj" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Edit","subcategories", new { id = Model.id_subcategories })'" />
+   
+</p>

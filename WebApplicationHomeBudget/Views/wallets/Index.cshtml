@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.walletClass>
+
+@{
+    ViewBag.Title = "Portfele";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+    <link href="~/Content/main3.css" rel="stylesheet" />
+    <h2>Portfele</h2>
+
+    <p>
+        <input type="button" value="Dodaj portfel" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Create","wallets") ' " />
+        
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Nazwa portfela</label>
+        </th>
+        @*<th>
+            <label>Stan konta</label>
+        </th>*@
+        <th>
+            <label>Opcje</label>
+        </th>
+    </tr>
+
+@foreach (var item in Model  ) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name_wallet)
+        
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.Sum )
+    </td>*@
+    <td>
+        @Html.ActionLink("Edytuj", "Edit", new { id = item.id_wallet, id_Client_wall=item.id_Client_wallet }) |
+        @Html.ActionLink("Szczegóły", "Details", new { id = item.id_wallet }) |
+        @Html.ActionLink("Usuń", "Delete", new { id = item.id_wallet, id_Client_wall = item.id_Client_wallet })
+    </td>
+</tr>
+}
+
+</table>
+
+@ViewBag.info

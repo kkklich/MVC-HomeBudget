@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.Client_subcategories>
+
+@{
+    ViewBag.Title = "Kategorie";
+}
+<link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<link href="~/Content/main3.css" rel="stylesheet" />
+<h2>Kategorie</h2>
+
+<p>
+    <input type="button" value="Dodaj kategorie" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Create","subcategories") ' " />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Nazwa kategorii</label>
+        </th>
+        <th>
+            <labl>Opis</labl>
+        </th>
+        <th>
+            <label>Dochód czy wydatek?</label>
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.subcategories.Name_subcategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subcategories.description_Catgory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subcategories.Categories.Name_category)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.id_subcategories, id_client_Sub = item.id_Client_subcategories }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.id_subcategories })|
+                @Html.ActionLink("Usuń", "Delete", new { id = item.id_subcategories, id_client_Sub = item.id_Client_subcategories })
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@ViewBag.id_client

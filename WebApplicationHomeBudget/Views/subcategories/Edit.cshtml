@@ -1,0 +1,53 @@
+﻿@model WebApplicationHomeBudget.Models.subcategories
+
+@{
+    ViewBag.Title = "Edytuj";
+}
+<link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<h2>Edytuj</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Kategorie</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_subcategories)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Nazwa kategorii</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name_subcategory, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name_subcategory, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Opis</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.description_Catgory, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.description_Catgory, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Rodzaj kategorii</label>
+        <div class="col-md-10">
+            @Html.DropDownList("id_categories", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.id_categories, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.Hidden("id_Client_Subcategories", (object)ViewBag.id_client)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zapisz" class="btn btn-group-vertical" />
+        </div>
+    </div>
+</div>
+}
+
+
+@ViewBag.id_client

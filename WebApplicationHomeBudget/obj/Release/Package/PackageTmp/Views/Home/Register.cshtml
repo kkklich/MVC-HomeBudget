@@ -1,0 +1,90 @@
+﻿@model WebApplicationHomeBudget.Models.client
+
+
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<h1>Zarejestruj się</h1>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Imię</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })*@
+                <input type="text" name="firstname" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nazwisko</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })*@
+                <input type="text" name="surename" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">E-mail</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })*@
+                <input type="email" name="email" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Login</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Login_Name_Unique, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Login_Name_Unique, "", new { @class = "text-danger" })*@
+                <input type="text" name="Login" class="form-control" required />
+                <a style="color:red">@ViewBag.errorLogin</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hasło</label>
+            <div class="col-md-10">
+                <!--
+                        @Html.EditorFor(model => model.Password_text, new { htmlAttributes = new { @class = "form-control" } })
+                     @Html.ValidationMessageFor(model => model.Password_text, "", new { @class = "text-danger" })
+                -->
+
+                <input type="password" name="Password" class="form-control" required />
+                <a style="color:red">@ViewBag.strongPass</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Powtórz hasło</label>
+            <div class="col-md-10">
+
+                <input type="password" name="PasswordRepeat" class="form-control" required />
+                <a style="color:red">@ViewBag.errorMesseage</a>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Utwórz" class="btn btn-group-vertical" />
+            </div>
+        </div>
+    </div>
+}
+
+<h2>@ViewBag.error</h2>
+<h2>@ViewBag.pass2</h2>
+

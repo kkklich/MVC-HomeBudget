@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.Transact>
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<link href="~/Content/main3.css" rel="stylesheet" />
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Portfel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class=" control-label col-md-2">Nazwa portfela</label>
+        </dt>
+
+        <dd>
+            @ViewBag.NameWallet
+        </dd>
+        <input type="button" value="Edytuj" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Edit","wallets",new { id = @ViewBag.id_wallet})'" />
+    </dl>
+
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a>Kwota</a>
+        </th>
+        <th>
+            <a>Data transakcji</a>
+        </th>
+        <th>
+            <a>Opis</a>
+        </th>
+        <th>
+            <a>Przychód czy wydatek?</a>
+        </th>
+       
+        <th>
+            <a>Kategoria</a>
+        </th>
+        <th>
+            <a>Portfel</a>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_Transaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descript)
+            </td>
+            <td>
+                @{
+                    if (item.IfIncome == true)
+                    {
+                        <a>Przychód</a>
+                    }
+                    else
+                    {
+                        <a>Wydatek</a>
+                    }
+                }
+
+                @*Html.DisplayFor(modelItem => item.IfIncome)*@
+            </td>
+
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Client_subcategories.subcategories.Name_subcategory )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client_wallet.wallet.Name_wallet)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", "Transacts", new { id = item.id_trans }, new { }) |
+                @Html.ActionLink("Szczegóły", "Details", "Transacts", new { id = item.id_trans }, new { }) |
+                @Html.ActionLink("Usuń", "Delete", "Transacts", new { id = item.id_trans }, new { })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+
+

@@ -1,0 +1,84 @@
+﻿@model WebApplicationHomeBudget.Models.client
+
+@{
+    ViewBag.Title = "Edycja";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<h2>Edytowanie</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4></h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id_client)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Imie</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class=" control-label col-md-2">Nazwisko</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class=" control-label col-md-2">E-mail</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class=" control-label col-md-2">Login</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Login_Name_Unique, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Login_Name_Unique, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class=" control-label col-md-2">Hasło</label>
+        <div class="col-md-10">
+            
+               @Html.EditorFor(model => model.Password_text, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password_text, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class=" control-label col-md-2">Hasło</label>
+        <div class="col-md-10">
+          <input type="password" name="RePassword"  class = "form-control" />
+            <a style="color:red">@ViewBag.errorPass</a>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zapisz" class="btn btn-group-vertical" />
+            @*<input type="button" value="Zmień hasło" class="btn btn-default" onclick="location.href= '@Url.Action("ChangePassword","Home",new { id = Model.id_client } ) ' " />*@
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <input type="button" value="Usuń konto" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Delete","clients",new { id = Model.id_client})'" />
+   
+</div>

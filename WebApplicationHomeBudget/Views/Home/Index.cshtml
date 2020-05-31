@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Budżet domowy";
+}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="~/Content/main3.css" rel="stylesheet" />
+
+    
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+    <style>
+        p {
+            color: #01011d;
+        }
+
+        #banner {
+            background-color: none;
+        }
+    </style>
+
+</head>
+<body >
+    <section id="banner"  >
+        <div >
+            <div class="inner">
+                <header>
+                    <h1>Budżet domowy</h1>
+                    <p class="lead">Jest to Twój własny budżet, w którym możesz wpisywać wszystkie swoje dochody oraz wydatki</p>
+
+                </header>
+                <a href="#main" class="more">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="main">
+        <div class="inner">
+
+
+            <div class="thumbnails">
+
+                <div class="box">
+
+                    <div class="inner">
+                        <h3>Dochody</h3>
+                        <hr>
+                        <p>
+                            Dodawanie, edytowanie oraz przeglądanie wszystkich dochodów
+                        </p>
+                        <br />
+
+                        <input type="button" value="Dochody" style="background-color:#11da1b" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Index","Transacts",new { Ifincome="income" } ) ' " />
+                    </div>
+                </div>
+
+
+
+
+                <div class="box">
+
+                    <div class="inner">
+                        <h3>Wydatki</h3>
+                        <hr>
+                        <p>Dodawanie, edytowanie oraz przeglądanie wszystkich wydatków</p>
+                        <br />
+                        <input type="button" style="background-color:#e41c1c" onclick="location.href='@Url.Action("Index","Transacts",new { ifincome="expenses" })'" class="btn btn-group-vertical" value="Wydatki " />
+
+                    </div>
+                </div>
+
+
+                <div class="box">
+
+                    <div class="inner">
+                        <h3>Podsumowanie</h3>
+                        <hr>
+                        <p> Przeglądnie wszystkich transakcji poprzez wyświetlanie danych na wykresach</p><br />
+                        <input type="button"  style="background-color:#11da1b" onclick="location.href='@Url.Action("Summary","Transacts")'" class="btn btn-group-vertical" value="Podsumowanie" />
+                    </div>
+                </div>
+
+                <div class="box">
+
+                    <div class="inner">
+                        <h3>Kategorie</h3>
+                        <hr>
+                        <p>Przeglądaj, dodawaj, usuwaj kategorie</p><br />
+                        <input type="button"  style="background-color:#e41c1c" onclick="location.href='@Url.Action("Index","subcategories")'" class="btn btn-group-vertical" value="Kategorie" />
+
+                    </div>
+                </div>
+
+                <div class="box">
+
+
+                    <div class="inner">
+                        <h3> Portfele</h3>
+                        <hr>
+                        <p>Przeglądaj, dodawaj, edytuj swoje portfele</p><br />
+                        <input type="button"style="background-color:#11da1b" onclick="location.href='@Url.Action("Index","wallets")'" class="btn btn-group-vertical" value="Portfele" />
+
+                    </div>
+                </div>
+
+                <div class="box">
+
+                    <div class="inner">
+                        <h3>Konto</h3>
+                        <hr size="0.3">
+                        <p  >Zmień ustawienia swojego konta</p>
+                        <br />
+                        <input type="button" style="background-color: #e41c1c" onclick="location.href='@Url.Action("details","clients",new { id = Session["id_login"] })'" class="btn btn-group-vertical" value="Konto" />
+
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.poptrox.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+</html>

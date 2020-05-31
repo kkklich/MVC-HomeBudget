@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="HomeBudget3Entities-Web.config Connection String" description="HomeBudget3Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ModelHome3.csdl|res://*/Models.ModelHome3.ssdl|res://*/Models.ModelHome3.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SQL5050.site4now.net;initial catalog=DB_A5D652_krzysztof3;     user id=DB_A5D652_krzysztof3_admin;password=Calimera123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\rysio\\source\\repos\\WebApplicationHomeBudget\\WebApplicationHomeBudget\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HomeBudget3Entities']/@connectionString" />
+  </parameter>
+</parameters>

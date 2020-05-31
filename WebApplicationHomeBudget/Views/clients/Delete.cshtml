@@ -1,0 +1,59 @@
+﻿@model WebApplicationHomeBudget.Models.client
+
+@{
+    ViewBag.Title = "Usuń";
+}
+<link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<link href="~/Content/main3.css" rel="stylesheet" />
+<h2>@ViewBag.Title</h2>
+
+<h3>Napewno chcesz usunąc konto?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a>Imie</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            <a>Nazwisko</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surname)
+        </dd>
+
+        <dt>
+            <a>E-mail</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            <a>Login</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login_Name_Unique)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-group-vertical" />
+            <input type="button" value="Powrót" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Details","clients",new { id = Model.id_client } ) ' " />
+
+        </div>
+    }
+</div>

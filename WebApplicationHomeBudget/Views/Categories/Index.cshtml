@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.Categories>
+
+@{
+    ViewBag.Title = "Kategorie";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<h2>Kategorie</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <a>Nazwa kategorii</a>
+        </th>
+        <th>
+            <a>Opis</a>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description_Catgory)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.id_categories }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.id_categories }) |
+            @Html.ActionLink("Usuń", "Delete", new { id = item.id_categories })|
+            @Html.ActionLink("Podkategorie", "Index","subcategories",new { id = item.id_categories },new { })
+            
+        </td>
+       
+    </tr>
+}
+
+</table>

@@ -1,0 +1,96 @@
+﻿@model  WebApplicationHomeBudget.Models.Transact
+
+@{
+    ViewBag.Title = "Edytuj";
+}
+
+
+<h2>Edytuj</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_trans)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Kwota</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                @*<input type="number" name="Amount" class="form-control" value="@ViewBag.Amount" />*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Data</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.date_Transaction, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.date_Transaction, "", new { @class = "text-danger" })
+                @*<input type="date" name="date_Transaction" class="form-control" value="@ViewBag.date_Transaction" />*@
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Opis</label>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.descript, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.descript, "", new { @class = "text-danger" })*@
+                <input type="text" name="descript" class="form-control" value="@ViewBag.descript" />
+            </div>
+        </div>
+
+
+        @*<label class="control-label col-md-2">Przychód czy wydatek?</label>
+            <input type="radio" id="income" name="IfIncome" value="income" class = "form-control" spellcheck="false" required>
+            <label for="income"   >Income</label><br>
+            <input type="radio" id="expenses" name="IfIncome" value="expenses" class = "form-control">
+            <label for="expenses">Expenses</label><br>*@
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Dochód czy wydatek?</label>
+            <div class="col-md-10">
+                Dochód
+                @Html.RadioButtonFor(model => model.IfIncome, true)
+                Wydatek
+                @Html.RadioButtonFor(model => model.IfIncome, false)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Kategoria</label>
+            <div class="col-md-10">
+                @Html.DropDownList("id_Client_subcategories", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_Client_subcategories , "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Portfel</label>
+            <div class="col-md-10">
+                @Html.DropDownList("id_Client_wallet", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_Client_wallet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+       
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-group-vertical" />
+            </div>
+        </div>
+    </div>
+}
+
+@ViewBag.infowall
+@ViewBag.infowall2 

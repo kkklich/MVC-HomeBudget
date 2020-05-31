@@ -1,0 +1,116 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.Transact>
+
+@{
+    ViewBag.Title = ViewBag.title;
+}
+
+<link href="~/Content/main3.css" rel="stylesheet" />
+
+
+
+
+<h2>@Session["Login_Name"]</h2>
+
+<h4>@ViewBag.title</h4>
+<br />
+<p>
+    @if (ViewBag.title == "Wydatki")
+    {
+        <input type="button" value="Dodaj wydatek" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Create", "Transacts", new { title = ViewBag.title }) ' " />
+    }
+    else
+    {
+        <input type="button" value="Dodaj dochód" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Create", "Transacts", new { title = ViewBag.title }) ' " />
+    }
+
+</p>
+
+
+@*<div class="limiter">*@
+<div>
+    <div class="wrap-table100">
+        <div class="table100">
+            <table>
+                <thead>
+
+
+                    <tr>
+                        <th>
+                            <a>Kwota</a>
+                        </th>
+                        <th>
+                            <a>Data transakcji</a>
+                        </th>
+                        <th>
+                            <a>Opis</a>
+                        </th>
+
+
+                        <th>
+                            <a>Kategoria</a>
+                        </th>
+                        <th>
+                            <a>Portfel</a>
+                        </th>
+                        <th>
+                            <a>Opcje</a>
+                        </th>
+
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date_Transaction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descript)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client_subcategories.subcategories.Name_subcategory)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client_wallet.wallet.Name_wallet)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.id_trans }) |
+                            @Html.ActionLink("Szczegóły", "Details", new { id = item.id_trans }) |
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.id_trans })
+                        </td>
+                    </tr>
+
+                }
+
+
+            </table>
+        </div>
+    </div>
+</div>
+@*</div>*@
+
+
+
+
+<div class="row"> <label>@ViewBag.info    @ViewBag.income</label></div>
+
+
+
+@if (ViewBag.title == "Dochody")
+{
+    <img src="@Url.Action("ChartDateIncome", "Chart")" alt="Chart" />
+}
+else
+{
+    if (ViewBag.title == "Wydatki")
+    {
+        <img src="@Url.Action("ChartDateExpenses", "Chart")" alt="Chart" />
+    }
+
+}
+

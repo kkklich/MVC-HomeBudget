@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A5D652_krzysztof3ModelStoreContainer" CdmEntityContainer="HomeBudget2Entities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="DB_A5D652_krzysztof3Model.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+          <ScalarProperty Name="Name_category" ColumnName="Name_category" />
+          <ScalarProperty Name="description_Catgory" ColumnName="description_Catgory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="DB_A5D652_krzysztof3Model.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Login_Name_Unique" ColumnName="Login_Name_Unique" />
+          <ScalarProperty Name="Password_text" ColumnName="Password_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategories">
+      <EntityTypeMapping TypeName="DB_A5D652_krzysztof3Model.subcategories">
+        <MappingFragment StoreEntitySet="subcategories">
+          <ScalarProperty Name="id_subcategories" ColumnName="id_subcategories" />
+          <ScalarProperty Name="Name_subcategory" ColumnName="Name_subcategory" />
+          <ScalarProperty Name="description_Catgory" ColumnName="description_Catgory" />
+          <ScalarProperty Name="id_categories" ColumnName="id_categories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transact">
+      <EntityTypeMapping TypeName="DB_A5D652_krzysztof3Model.Transact">
+        <MappingFragment StoreEntitySet="Transact">
+          <ScalarProperty Name="id_trans" ColumnName="id_trans" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="date_Transaction" ColumnName="date_Transaction" />
+          <ScalarProperty Name="descript" ColumnName="descript" />
+          <ScalarProperty Name="IfIncome" ColumnName="IfIncome" />
+          <ScalarProperty Name="id_SubCategories" ColumnName="id_SubCategories" />
+          <ScalarProperty Name="id_wallet" ColumnName="id_wallet" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wallet">
+      <EntityTypeMapping TypeName="DB_A5D652_krzysztof3Model.wallet">
+        <MappingFragment StoreEntitySet="wallet">
+          <ScalarProperty Name="id_wallet" ColumnName="id_wallet" />
+          <ScalarProperty Name="Name_wallet" ColumnName="Name_wallet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

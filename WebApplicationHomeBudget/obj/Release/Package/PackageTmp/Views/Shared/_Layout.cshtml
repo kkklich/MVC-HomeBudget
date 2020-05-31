@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top"  >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Budżet domowy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Podsumowanie", "Summary", "Transacts")</li>
+                    
+                    <li>@Html.ActionLink("Dochody", "Index", "Transacts", new { ifincome = "income" }, new { })</li>
+                    <li>@Html.ActionLink("Wydatki", "Index", "Transacts", new { ifincome = "expenses" }, new { })</li>
+                    <li>@Html.ActionLink("Przelej", "Change", "Transacts")</li>
+                    <li>@Html.ActionLink("Konto", "details", "clients", new { id = Session["id_login"] }, new { })</li>
+                    
+                        @{
+                            if (Session["Login_Name"] != null)
+                            {<li>@Html.ActionLink("Wyloguj (" + Session["Login_Name"].ToString() + ")", "LogOut", "Home")</li>}
+                        else
+                        { <li>@Html.ActionLink("Zaloguj", "LogOut", "Home")</li>}
+
+                        }
+
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Budżet domowy - Krzysztof Klich</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

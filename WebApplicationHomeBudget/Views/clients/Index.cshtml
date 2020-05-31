@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplicationHomeBudget.Models.client>
+
+@{
+    ViewBag.Title = "Konto użytkownika";
+}
+    <link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<h2>Konto</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a>Imie</a>
+        </th>
+        <th>
+            <a>Nazwisko</a>
+        </th>
+        <th>
+            <a>E-mail</a>
+        </th>
+        <th>
+            <a>Login</a>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.register.Login_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_client }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_client }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_client })
+        </td>
+    </tr>
+}
+
+</table>

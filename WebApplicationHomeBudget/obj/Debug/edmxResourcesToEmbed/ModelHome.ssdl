@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A5D652_krzysztof3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="id_categories" />
+    </Key>
+    <Property Name="id_categories" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_category" Type="varchar" MaxLength="50" />
+    <Property Name="description_Catgory" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id_client" />
+    </Key>
+    <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="60" />
+    <Property Name="surname" Type="varchar" MaxLength="60" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="Login_Name_Unique" Type="varchar" MaxLength="50" />
+    <Property Name="Password_text" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="subcategories">
+    <Key>
+      <PropertyRef Name="id_subcategories" />
+    </Key>
+    <Property Name="id_subcategories" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_subcategory" Type="varchar" MaxLength="30" />
+    <Property Name="description_Catgory" Type="varchar" MaxLength="100" />
+    <Property Name="id_categories" Type="int" />
+  </EntityType>
+  <EntityType Name="Transact">
+    <Key>
+      <PropertyRef Name="id_trans" />
+    </Key>
+    <Property Name="id_trans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="real" />
+    <Property Name="date_Transaction" Type="datetime" />
+    <Property Name="descript" Type="varchar" MaxLength="100" />
+    <Property Name="IfIncome" Type="bit" />
+    <Property Name="id_SubCategories" Type="int" />
+    <Property Name="id_wallet" Type="int" />
+    <Property Name="id_client" Type="int" />
+  </EntityType>
+  <EntityType Name="wallet">
+    <Key>
+      <PropertyRef Name="id_wallet" />
+    </Key>
+    <Property Name="id_wallet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_wallet" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__subcatego__id_ca__3E52440B">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="subcategories" Type="Self.subcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="id_categories" />
+      </Principal>
+      <Dependent Role="subcategories">
+        <PropertyRef Name="id_categories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_cli__4316F928">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_Sub__412EB0B6">
+    <End Role="subcategories" Type="Self.subcategories" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategories">
+        <PropertyRef Name="id_subcategories" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_SubCategories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_wal__4222D4EF">
+    <End Role="wallet" Type="Self.wallet" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wallet">
+        <PropertyRef Name="id_wallet" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A5D652_krzysztof3ModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subcategories" EntityType="Self.subcategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transact" EntityType="Self.Transact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wallet" EntityType="Self.wallet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__subcatego__id_ca__3E52440B" Association="Self.FK__subcatego__id_ca__3E52440B">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="subcategories" EntitySet="subcategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_cli__4316F928" Association="Self.FK__Transact__id_cli__4316F928">
+      <End Role="client" EntitySet="client" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_Sub__412EB0B6" Association="Self.FK__Transact__id_Sub__412EB0B6">
+      <End Role="subcategories" EntitySet="subcategories" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_wal__4222D4EF" Association="Self.FK__Transact__id_wal__4222D4EF">
+      <End Role="wallet" EntitySet="wallet" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

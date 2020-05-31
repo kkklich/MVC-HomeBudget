@@ -1,0 +1,180 @@
+﻿@*@model IEnumerable<WebApplicationHomeBudget.Models.Transact>*@
+
+@*@model  IEnumerable<WebApplicationHomeBudget.Models.DateTransact>*@
+
+@using System.Dynamic
+
+@model dynamic
+
+
+
+<link href="~/Content/main3.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Podsumowanie";
+}
+
+
+
+
+<h2>@Session["Login_Name"]</h2>
+
+<h4>Podsumowanie</h4>
+
+
+
+<label>Suma dochodów:    @ViewBag.income2</label>
+<hr />
+<label>Suma wydatków:    @ViewBag.expenses2</label>
+<hr />
+<label>Stan konta:       @ViewBag.sum</label>
+
+
+
+<div class="row">
+    <h2>Bilans</h2>
+    <img src="@Url.Action("ChartSummary","Chart",new {income=ViewBag.income, expenses=ViewBag.expenses })" alt="Chart" />
+</div>
+
+
+
+<div class="row">
+    <h2>Dochody miesięczne</h2>
+
+    <img src="@Url.Action("ChartDateIncome","Chart")" alt="Chart" />
+</div>
+
+
+<div class="row">
+    <h2>Wydatki miesięczne</h2>
+    @*<table border="1">
+            <tr>
+                <th>
+                    Miesiąć
+                </th>
+                <th>
+                    Suma
+                </th>
+            </tr>
+
+            @foreach (var item in Model.dataSumExpenses)
+            {
+                <tr>
+                    <td>
+                        @item.date_Transaction
+                    </td>
+                    <td>
+                        @item.Liczba
+                    </td>
+                </tr>
+            }
+        </table>*@
+    @*<img src="@Url.Action("ChartDateExpenses","Chart")" alt="Chart" />*@
+    <img src="@Url.Action("ChartDateExpenses","Chart")" alt="Chart" />
+</div>
+
+
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+        <h2>Dochody z poszczególnych kategorii</h2>
+        @*<table border="1">
+                <tr>
+                    <th>
+                        Miesiąć
+                    </th>
+                    <th>
+                        Suma
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.categoriesSums)
+                {
+                    <tr>
+                        <td>
+                            @item.Name_subcategory
+                        </td>
+                        <td>
+                            @item.Suma
+                        </td>
+                    </tr>
+                }
+
+            </table>*@
+        <img src="@Url.Action("ChartIncome","Chart")" alt="Chart" />
+    </div>
+
+    <div class="col-md-6">
+
+        <h2>Wydatki z poszczególnych kategorii</h2>
+        @*<table border="1">
+                <tr>
+                    <th>
+                        Miesiąc
+                    </th>
+                    <th>
+                        Suma
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.categoriesSumsExpenses)
+                {
+                    <tr>
+                        <td>
+                            @item.Name_subcategory
+                        </td>
+                        <td>
+                            @item.Suma
+                        </td>
+                    </tr>
+                }
+
+            </table>*@
+        <img src="@Url.Action("ChartExpenses","Chart")" alt="Chart" />
+
+    </div>
+
+</div>
+
+
+
+<div class="row">
+
+
+    <h2>Ilość posiadanych oszczędnośći w portfelach</h2>
+
+    @*<table border="1" class="green-table">
+            <tr>
+                <th>
+                    Nazwa portfela
+                </th>
+                <th>
+                    Suma pieniędzy
+                </th>
+            </tr>
+
+            @foreach (var item in Model.walletData)
+            {
+                <tr>
+                    <td>
+                        @item.Name_wallet
+                    </td>
+                    <td>
+                        @item.Sum
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+
+
+
+    <img src="@Url.Action("ChartWallet","Chart")" alt="Chart" />
+
+</div>
+
+
+

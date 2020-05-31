@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HomeBudgetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="id_categories" />
+    </Key>
+    <Property Name="id_categories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description_Catgory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="subcategories" Relationship="Self.FK__subcatego__id_ca__412EB0B6" FromRole="Categories" ToRole="subcategories" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id_client" />
+    </Key>
+    <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Transact" Relationship="Self.FK__Transact__id_cli__45F365D3" FromRole="client" ToRole="Transact" />
+    <Property Name="Login_Name_Unique" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password_text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_subcategories" Relationship="HomeBudgetModel.FK__Client_su__id_cl__4222D4EF" FromRole="client" ToRole="Client_subcategories" />
+    <NavigationProperty Name="Client_wallet" Relationship="HomeBudgetModel.FK__Client_wa__id_cl__44FF419A" FromRole="client" ToRole="Client_wallet" />
+    <NavigationProperty Name="WalletClients" Relationship="HomeBudgetModel.FK__WalletCli__id_cl__5165187F" FromRole="client" ToRole="WalletClients" />
+  </EntityType>
+  <EntityType Name="subcategories">
+    <Key>
+      <PropertyRef Name="id_subcategories" />
+    </Key>
+    <Property Name="id_subcategories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_subcategory" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="description_Catgory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_categories" Type="Int32" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK__subcatego__id_ca__412EB0B6" FromRole="subcategories" ToRole="Categories" />
+    <NavigationProperty Name="Transact" Relationship="Self.FK__Transact__id_Sub__440B1D61" FromRole="subcategories" ToRole="Transact" />
+    <NavigationProperty Name="Client_subcategories" Relationship="HomeBudgetModel.FK__Client_su__id_su__412EB0B6" FromRole="subcategories" ToRole="Client_subcategories" />
+    <NavigationProperty Name="Transact1" Relationship="HomeBudgetModel.FK__Transact__id_Sub__412EB0B6" FromRole="subcategories" ToRole="Transact" />
+  </EntityType>
+  <EntityType Name="Transact">
+    <Key>
+      <PropertyRef Name="id_trans" />
+    </Key>
+    <Property Name="id_trans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Single" />
+    <Property Name="date_Transaction" Type="DateTime" Precision="3" />
+    <Property Name="descript" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IfIncome" Type="Boolean" />
+    <Property Name="id_SubCategories" Type="Int32" />
+    <Property Name="id_wallet" Type="Int32" />
+    <Property Name="id_client" Type="Int32" />
+    <NavigationProperty Name="client" Relationship="Self.FK__Transact__id_cli__45F365D3" FromRole="Transact" ToRole="client" />
+    <NavigationProperty Name="subcategories" Relationship="Self.FK__Transact__id_Sub__440B1D61" FromRole="Transact" ToRole="subcategories" />
+    <NavigationProperty Name="wallet" Relationship="Self.FK__Transact__id_wal__44FF419A" FromRole="Transact" ToRole="wallet" />
+    <Property Name="id_Client_subcategories" Type="Int32" />
+    <Property Name="id_Client_wallet" Type="Int32" />
+    <Property Name="id_SubCategories1" Type="Int32" />
+    <Property Name="id_wallet1" Type="Int32" />
+    <NavigationProperty Name="subcategories1" Relationship="HomeBudgetModel.FK__Transact__id_Sub__412EB0B6" FromRole="Transact" ToRole="subcategories" />
+    <NavigationProperty Name="wallet1" Relationship="HomeBudgetModel.FK__Transact__id_wal__4222D4EF" FromRole="Transact" ToRole="wallet" />
+  </EntityType>
+  <EntityType Name="wallet">
+    <Key>
+      <PropertyRef Name="id_wallet" />
+    </Key>
+    <Property Name="id_wallet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_wallet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Transact" Relationship="Self.FK__Transact__id_wal__44FF419A" FromRole="wallet" ToRole="Transact" />
+    <Property Name="description_Wallet" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client_wallet" Relationship="HomeBudgetModel.FK__Client_wa__id_wa__45F365D3" FromRole="wallet" ToRole="Client_wallet" />
+    <NavigationProperty Name="Transact1" Relationship="HomeBudgetModel.FK__Transact__id_wal__4222D4EF" FromRole="wallet" ToRole="Transact" />
+    <NavigationProperty Name="WalletClients" Relationship="HomeBudgetModel.FK__WalletCli__id_wa__5070F446" FromRole="wallet" ToRole="WalletClients" />
+  </EntityType>
+  <Association Name="FK__subcatego__id_ca__412EB0B6">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="subcategories" Type="Self.subcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="id_categories" />
+      </Principal>
+      <Dependent Role="subcategories">
+        <PropertyRef Name="id_categories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_cli__45F365D3">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_Sub__440B1D61">
+    <End Role="subcategories" Type="Self.subcategories" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategories">
+        <PropertyRef Name="id_subcategories" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_SubCategories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_wal__44FF419A">
+    <End Role="wallet" Type="Self.wallet" Multiplicity="0..1" />
+    <End Role="Transact" Type="Self.Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wallet">
+        <PropertyRef Name="id_wallet" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HomeBudgetEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="subcategories" EntityType="Self.subcategories" />
+    <EntitySet Name="Transact" EntityType="Self.Transact" />
+    <EntitySet Name="wallet" EntityType="Self.wallet" />
+    <AssociationSet Name="FK__subcatego__id_ca__412EB0B6" Association="Self.FK__subcatego__id_ca__412EB0B6">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="subcategories" EntitySet="subcategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_cli__45F365D3" Association="Self.FK__Transact__id_cli__45F365D3">
+      <End Role="client" EntitySet="client" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_Sub__440B1D61" Association="Self.FK__Transact__id_Sub__440B1D61">
+      <End Role="subcategories" EntitySet="subcategories" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_wal__44FF419A" Association="Self.FK__Transact__id_wal__44FF419A">
+      <End Role="wallet" EntitySet="wallet" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <EntitySet Name="Client_subcategories" EntityType="HomeBudgetModel.Client_subcategories" />
+    <EntitySet Name="Client_wallet" EntityType="HomeBudgetModel.Client_wallet" />
+    <AssociationSet Name="FK__Client_su__id_cl__4222D4EF" Association="HomeBudgetModel.FK__Client_su__id_cl__4222D4EF">
+      <End Role="client" EntitySet="client" />
+      <End Role="Client_subcategories" EntitySet="Client_subcategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_wa__id_cl__44FF419A" Association="HomeBudgetModel.FK__Client_wa__id_cl__44FF419A">
+      <End Role="client" EntitySet="client" />
+      <End Role="Client_wallet" EntitySet="Client_wallet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_su__id_su__412EB0B6" Association="HomeBudgetModel.FK__Client_su__id_su__412EB0B6">
+      <End Role="subcategories" EntitySet="subcategories" />
+      <End Role="Client_subcategories" EntitySet="Client_subcategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Client_wa__id_wa__45F365D3" Association="HomeBudgetModel.FK__Client_wa__id_wa__45F365D3">
+      <End Role="wallet" EntitySet="wallet" />
+      <End Role="Client_wallet" EntitySet="Client_wallet" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="HomeBudgetModel.sysdiagrams" />
+    <EntitySet Name="WalletClients" EntityType="HomeBudgetModel.WalletClients" />
+    <AssociationSet Name="FK__WalletCli__id_cl__5165187F" Association="HomeBudgetModel.FK__WalletCli__id_cl__5165187F">
+      <End Role="client" EntitySet="client" />
+      <End Role="WalletClients" EntitySet="WalletClients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_Sub__412EB0B6" Association="HomeBudgetModel.FK__Transact__id_Sub__412EB0B6">
+      <End Role="subcategories" EntitySet="subcategories" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transact__id_wal__4222D4EF" Association="HomeBudgetModel.FK__Transact__id_wal__4222D4EF">
+      <End Role="wallet" EntitySet="wallet" />
+      <End Role="Transact" EntitySet="Transact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WalletCli__id_wa__5070F446" Association="HomeBudgetModel.FK__WalletCli__id_wa__5070F446">
+      <End Role="wallet" EntitySet="wallet" />
+      <End Role="WalletClients" EntitySet="WalletClients" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Client_subcategories">
+    <Key>
+      <PropertyRef Name="id_Client_subcategories" />
+    </Key>
+    <Property Name="id_Client_subcategories" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_subcategories" Type="Int32" />
+    <Property Name="id_client" Type="Int32" />
+    <NavigationProperty Name="client" Relationship="HomeBudgetModel.FK__Client_su__id_cl__4222D4EF" FromRole="Client_subcategories" ToRole="client" />
+    <NavigationProperty Name="subcategories" Relationship="HomeBudgetModel.FK__Client_su__id_su__412EB0B6" FromRole="Client_subcategories" ToRole="subcategories" />
+  </EntityType>
+  <EntityType Name="Client_wallet">
+    <Key>
+      <PropertyRef Name="id_Client_wallet" />
+    </Key>
+    <Property Name="id_Client_wallet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_client" Type="Int32" />
+    <Property Name="id_wallet" Type="Int32" />
+    <NavigationProperty Name="client" Relationship="HomeBudgetModel.FK__Client_wa__id_cl__44FF419A" FromRole="Client_wallet" ToRole="client" />
+    <NavigationProperty Name="wallet" Relationship="HomeBudgetModel.FK__Client_wa__id_wa__45F365D3" FromRole="Client_wallet" ToRole="wallet" />
+  </EntityType>
+  <Association Name="FK__Client_su__id_cl__4222D4EF">
+    <End Type="HomeBudgetModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Client_subcategories" Role="Client_subcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="Client_subcategories">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_wa__id_cl__44FF419A">
+    <End Type="HomeBudgetModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Client_wallet" Role="Client_wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="Client_wallet">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_su__id_su__412EB0B6">
+    <End Type="HomeBudgetModel.subcategories" Role="subcategories" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Client_subcategories" Role="Client_subcategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategories">
+        <PropertyRef Name="id_subcategories" />
+      </Principal>
+      <Dependent Role="Client_subcategories">
+        <PropertyRef Name="id_subcategories" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Client_wa__id_wa__45F365D3">
+    <End Type="HomeBudgetModel.wallet" Role="wallet" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Client_wallet" Role="Client_wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wallet">
+        <PropertyRef Name="id_wallet" />
+      </Principal>
+      <Dependent Role="Client_wallet">
+        <PropertyRef Name="id_wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WalletClients">
+    <Key>
+      <PropertyRef Name="id_walletClient" />
+    </Key>
+    <Property Name="id_walletClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_wallet" Type="Int32" />
+    <Property Name="id_client" Type="Int32" />
+    <NavigationProperty Name="client" Relationship="HomeBudgetModel.FK__WalletCli__id_cl__5165187F" FromRole="WalletClients" ToRole="client" />
+    <NavigationProperty Name="wallet" Relationship="HomeBudgetModel.FK__WalletCli__id_wa__5070F446" FromRole="WalletClients" ToRole="wallet" />
+  </EntityType>
+  <Association Name="FK__WalletCli__id_cl__5165187F">
+    <End Type="HomeBudgetModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.WalletClients" Role="WalletClients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="WalletClients">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_Sub__412EB0B6">
+    <End Type="HomeBudgetModel.subcategories" Role="subcategories" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Transact" Role="Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategories">
+        <PropertyRef Name="id_subcategories" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_SubCategories1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transact__id_wal__4222D4EF">
+    <End Type="HomeBudgetModel.wallet" Role="wallet" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.Transact" Role="Transact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wallet">
+        <PropertyRef Name="id_wallet" />
+      </Principal>
+      <Dependent Role="Transact">
+        <PropertyRef Name="id_wallet1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WalletCli__id_wa__5070F446">
+    <End Type="HomeBudgetModel.wallet" Role="wallet" Multiplicity="0..1" />
+    <End Type="HomeBudgetModel.WalletClients" Role="WalletClients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wallet">
+        <PropertyRef Name="id_wallet" />
+      </Principal>
+      <Dependent Role="WalletClients">
+        <PropertyRef Name="id_wallet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

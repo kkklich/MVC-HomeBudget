@@ -1,0 +1,54 @@
+﻿@model WebApplicationHomeBudget.Models.client
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+<link href="~/Content/StyleHTML1.css" rel="stylesheet" />
+<link href="~/Content/main3.css" rel="stylesheet" />
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Użytkownik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a>Imie</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstname)
+        </dd>
+
+        <dt>
+            <a>Nazwisko</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surname)
+        </dd>
+
+        <dt>
+            <a>E-mail</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            <a>Login</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login_Name_Unique)
+        </dd>
+
+
+
+    </dl>
+
+</div>
+<p>
+    <input type="button" value="Edytuj" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Edit","clients",new { id = Model.id_client } ) ' " />
+
+</p>

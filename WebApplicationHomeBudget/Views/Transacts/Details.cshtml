@@ -1,0 +1,87 @@
+﻿@model  WebApplicationHomeBudget.Models.Transact
+
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Transakcji</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+            <label>Kwota</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            <label>Data</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_Transaction)
+        </dd>
+
+        <dt>
+            <label>Opis</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descript)
+        </dd>
+
+
+
+        <dt>
+            <label>Imię</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client.Login_Name_Unique)
+        </dd>
+
+        <dt>
+            <label>Nazwa kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client_subcategories.subcategories.Name_subcategory)
+
+        </dd>
+        <dt>
+            <label>Rodzaj kategorii</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client_subcategories.subcategories.Categories.Name_category)
+
+        </dd>
+
+        <dt>
+            <label>Portfel</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client_wallet.wallet.Name_wallet)
+        </dd>
+        <dt>
+            <label>Opis portfela</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client_wallet.wallet.description_Wallet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+    <input type="button" value="Edytuj" class="btn btn-group-vertical" onclick="location.href= '@Url.Action("Edit","Transacts",new { id = Model.id_trans } ) ' " />
+
+</p>
