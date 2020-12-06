@@ -1,9 +1,9 @@
 # MVC-HomeBudget
-Web-Budget      http://andrew687-001-site1.itempurl.com
+Web-Budget     http://rys123-001-site1.itempurl.com/Home/Log
 
 You can manage your own budget. You can add income and expenses. 
 
 
-Login: Kris1 
-Password: haslo
+Login: admin
+Password: admin
 
