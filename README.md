@@ -5,5 +5,6 @@ You can manage your own budget. You can add income and expenses.
 
 
 Login: admin
+
 Password: admin
 
