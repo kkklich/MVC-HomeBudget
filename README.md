@@ -1,5 +1,5 @@
 # MVC-HomeBudget
-Web-Budget     http://rys123-001-site1.itempurl.com/Home/Log
+Web-Budget     http://krysek5-001-site1.ftempurl.com
 
 Login: admin
 Password: admin
