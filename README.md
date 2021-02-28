@@ -23,7 +23,9 @@ Page where you can add your income or exenses
 Page with charts
 
 ![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart_page.png)
+
 ![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart2_page.png)
+
 ![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart3_page.png)
 
 
