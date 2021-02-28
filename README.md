@@ -1,7 +1,7 @@
 # MVC-HomeBudget
 Web-Budget     http://krysek5-001-site1.ftempurl.com
 
-Login: admin /n
+Login: admin \n
 Password: admin
 
 You can manage your home budget. You can add income and expenses. In desktop application are charts which show you how much have spend in this month, or show you the most popular categories of your expenses. 
