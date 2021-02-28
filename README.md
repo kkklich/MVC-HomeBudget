@@ -8,6 +8,20 @@ You can manage your home budget. You can add income and expenses. In desktop app
 
 I used entity framework to connect my app with database. My SQL relation-database is made with 6 tables. 
 
+Login page
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/Log_page.png)
+
+Home page
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/Home_page.png)
+
+Page where you can add your income or exenses
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/Income_page.png)
+
+Page with charts
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart_page.png)
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart2_page.png)
+![alt text](https://github.com/kkklich/MVC-HomeBudget/blob/master/ScreenShot/chart3_page.png)
+
 
 
 
